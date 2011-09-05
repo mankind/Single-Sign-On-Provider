@@ -1,0 +1,35 @@
+<h1>MyOnePass</h1>
+<div class="block" id="block-login">
+
+<h2>Sign in</h2>
+<div class="content login">
+      <div class="flash">
+        <% flash.each do |type, message| -%>
+          <div class="message <%= type %>">
+            <p><%= message %></p>
+          </div>
+
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+  <ul class="group wat-cf">
+  <p class="left"><%= f.label :email, :class => "label right" %></p>
+  <p class="right"><%= f.text_field :email, :class => "text_field" %></p>
+   </ul>
+   <ul class="group wat-cf">
+  <p class="left"><%= f.label :password, :class => "label right" %>< /p>
+  <p class="right"><%= f.password_field :password, :class => "text_field" %></p>
+  <% if devise_mapping.rememberable? -%>
+  </ul>
+  <ul class="group wat-cf">
+    <p><%= f.check_box :remember_me, :class => "label right" %> </P>
+	<p><%= f.label :remember_me, :class => "checkbox" %></p>
+  <% end -%>
+  </ul>
+  <ul class="group wat-cf">
+  <div class="right">
+  <p class="button button"><a image_tag "web-app-theme/icons/key.png><%=  f.submit "Sign in" %></a></p>
+<% end %>
+</div>
+  </ul>
+<%= render :partial => "devise/shared/links" %>
+</div>
+</div>

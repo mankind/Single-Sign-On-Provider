@@ -1,0 +1,10 @@
+== Single-Sign-on-Provider
+
+An Oauth Provider acting as user manager for multiple apps to authenticate against.
+
+
+== Appreciation
+Appreciation to the works listed below for helping me understand how to implement an Oauth rovider
+http://www.railsatwork.com/2010/10/implementing-oauth-provider-part-1.html
+http://blog.joshsoftware.com/2010/12/16/multiple-applications-with-devise-omniauth-and-single-sign-on/
+http://railscasts.com/episodes/235-omniauth-part-1

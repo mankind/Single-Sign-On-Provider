@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Myonepass</title>
+  
+    <%= stylesheet_link_tag :application %>
+    <%= javascript_include_tag :application %>
+  
+  <%= csrf_meta_tag %>
+</head>
+<body>
+  <div id="container">
+    <div id="header">
+      <h1><a href="/">Myonepass</a></h1>
+      <div id="user-navigation">
+        <ul class="wat-cf">
+		  <% if user_signed_in? %> 
+		  Signed in as <%= current_user.email %>. Not you?
+		  <li><a href="#"><%= t("web-app-theme.profile", :default => "Profile") %></a></li>
+          <li><a href="#"><%= t("web-app-theme.settings", :default => "Settings") %></a></li>
+          <li><a href="/logout" class="logout"><%= link_to t("web-app-theme.logout", :default => "Logout"), destroy_user_session_path, :method => :delete %></a></li>
+           <% else %>
+		    <%= link_to "sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
+		   <% end %>
+		</ul>
+      </div>
+	  
+      <div id="main-navigation">
+        <ul class="wat-cf"></ul>
+      </div>
+    </div>    
+    <div id="wrapper" class="wat-cf">
+      <div class="flash">
+        <% flash.each do |type, message| -%>
+          <div class="message <%= type %>">
+            <p><%= message %></p>
+          </div>
+        <% end -%>
+      </div>
+      <div id="main">
+        <%= yield %>
+        <div id="footer">
+          <div class="block">
+            <p>Copyright &copy; <%= Time.now.year %> Myonepass.</p>
+          </div>      
+        </div>
+      </div>
+      <div id="sidebar">
+        <%= yield :sidebar %>
+      </div>
+    </div>    
+  </div>
+</body>
+</html>

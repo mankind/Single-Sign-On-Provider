@@ -1,0 +1,35 @@
+<h1> MyOnePass</h1>
+<div class="block" id="block-signup">
+<h2>Sign up</h2>
+ <div class="content">
+   <div class="flash">
+        <% flash.each do |type, message| -%>
+          <div class="message <%= type %>">
+            <p><%= message %></p>
+          </div>
+        <% end -%>
+      </div>
+   </div>
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+    <div class="group">
+  <p><%= f.label :email %><br />
+  <%= f.email_field :email %></p>
+   </div>
+   <div class="group">
+  <p><%= f.label :password %><br />
+  <%= f.password_field :password %></p>
+   </div>
+   <div class="group">
+  <p><%= f.label :password_confirmation %><br />
+  <%= f.password_field :password_confirmation %></p>
+   </div>
+   <div class="group navform wat-cf">
+   <button class="button">
+  <p><a href="image_tag 'web-app-theme/icons/tick.png'"><%= f.submit "Sign up" %></a></p>
+   </button>
+   </div>
+<% end %>
+
+</div>
+<%= render :partial => "devise/shared/links" %>
